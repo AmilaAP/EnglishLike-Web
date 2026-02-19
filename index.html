@@ -5,10 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EnglishLike - Premium English Institute</title>
+    <meta name="description"
+        content="EnglishLike is an English educational institute which aims to make well equipped English speakers and balanced personalities. Join us today!">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -27,14 +30,32 @@
                         }
                     },
                     animation: {
-                        'float': 'float 3s ease-in-out infinite',
+                        'float': 'float 4s ease-in-out infinite',
+                        'float-delay': 'float 4s 1s ease-in-out infinite',
+                        'float-slow': 'float 6s ease-in-out infinite',
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'slide-in-left': 'slideInLeft 0.8s ease-out forwards',
+                        'slide-in-right': 'slideInRight 0.8s 0.3s ease-out forwards',
+                        'fade-up': 'fadeUp 0.8s ease-out forwards',
+                        'spin-slow': 'spin 20s linear infinite',
                     },
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        }
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-60px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        slideInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(60px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
                     }
                 }
             }
@@ -47,13 +68,129 @@
             -webkit-backdrop-filter: blur(12px);
         }
 
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
         .hero-bg {
-            background: radial-gradient(circle at top right, #1e3a8a, #0f172a);
+            background: radial-gradient(ellipse at top right, #1e3a8a, #0f172a 50%),
+                radial-gradient(ellipse at bottom left, #312e81, #0f172a 60%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #facc15, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-text-blue {
+            background: linear-gradient(135deg, #60a5fa, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glow-border {
+            position: relative;
+        }
+
+        .glow-border::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            background: linear-gradient(45deg, #FFD700, #1e3a8a, #6366f1, #FFD700);
+            border-radius: inherit;
+            z-index: -1;
+            animation: borderGlow 3s linear infinite;
+            background-size: 300% 300%;
+        }
+
+        @keyframes borderGlow {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .feature-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(250, 204, 21, 0.15);
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-number {
+            background: linear-gradient(135deg, #facc15, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        .orbit-ring {
+            border: 1px solid rgba(250, 204, 21, 0.1);
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 30s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .hover-glow:hover {
+            box-shadow: 0 0 30px rgba(250, 204, 21, 0.2), 0 0 60px rgba(250, 204, 21, 0.1);
+        }
+
+        .teacher-card-bg {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.3), rgba(99, 102, 241, 0.1));
         }
     </style>
 </head>
 
-<body class="bg-brand-light text-slate-800 font-sans antialiased">
+<body class="bg-brand-dark text-slate-800 font-sans antialiased">
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-nav border-b border-slate-700/30 transition-all duration-300" id="navbar">
@@ -68,8 +205,7 @@
                 <a href="index.html"
                     class="text-white hover:text-yellow-400 transition-colors font-medium relative group">
                     Home
-                    <span
-                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-400 transition-all group-hover:w-full"></span>
+                    <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-yellow-400"></span>
                 </a>
                 <a href="about.html"
                     class="text-slate-300 hover:text-yellow-400 transition-colors font-medium relative group">
@@ -84,7 +220,7 @@
                         class="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-400 transition-all group-hover:w-full"></span>
                 </a>
                 <a href="contact.html"
-                    class="bg-yellow-400 hover:bg-yellow-500 text-brand-dark px-6 py-2 rounded-full font-bold transition-all transform hover:scale-105 shadow-lg shadow-yellow-400/20">
+                    class="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-brand-dark px-6 py-2.5 rounded-full font-bold transition-all transform hover:scale-105 shadow-lg shadow-yellow-400/20">
                     Contact Us
                 </a>
             </div>
@@ -111,120 +247,431 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center pt-20 hero-bg overflow-hidden">
-        <!-- Background Elements -->
-        <div
-            class="absolute top-0 right-0 w-1/2 h-full bg-blue-600/10 blur-3xl rounded-full translate-x-1/3 -translate-y-1/4">
-        </div>
-        <div
-            class="absolute bottom-0 left-0 w-1/3 h-1/2 bg-yellow-400/10 blur-3xl rounded-full -translate-x-1/4 translate-y-1/4">
+    <!-- ============ HERO SECTION ============ -->
+    <section class="relative min-h-screen flex items-center hero-bg overflow-hidden">
+        <!-- Animated Background Particles -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="particle w-2 h-2 bg-yellow-400/30 top-[15%] left-[10%] animate-float"></div>
+            <div class="particle w-3 h-3 bg-blue-400/20 top-[25%] right-[15%] animate-float-delay"></div>
+            <div class="particle w-1.5 h-1.5 bg-yellow-400/20 top-[60%] left-[20%] animate-float-slow"></div>
+            <div class="particle w-2 h-2 bg-indigo-400/20 top-[70%] right-[25%] animate-float"></div>
+            <div class="particle w-1 h-1 bg-yellow-400/40 top-[40%] left-[70%] animate-float-delay"></div>
+            <div class="particle w-2.5 h-2.5 bg-blue-300/15 top-[80%] left-[60%] animate-float-slow"></div>
         </div>
 
-        <div class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 text-center md:text-left mb-12 md:mb-0">
-                <span
-                    class="inline-block py-1 px-3 rounded-full bg-blue-900/50 border border-blue-500/30 text-blue-300 text-sm font-semibold mb-6 animate-pulse-slow">
-                    🚀 Master English with Confidence
-                </span>
-                <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight mb-6">
-                    Unlock Your Potential with <span class="text-yellow-400">EnglishLike</span>
-                </h1>
-                <p class="text-lg md:text-xl text-slate-300 mb-8 max-w-lg mx-auto md:mx-0">
-                    Join the premier English learning institute led by expert educators. Elevate your speaking, writing,
-                    and professional communication skills to the next level.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                    <a href="courses.html"
-                        class="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-brand-dark font-bold py-4 px-8 rounded-full shadow-lg shadow-yellow-400/30 transition-all transform hover:scale-105 hover:-translate-y-1">
-                        Explore Courses
-                    </a>
-                    <a href="about.html"
-                        class="bg-transparent border-2 border-slate-500 text-white hover:border-yellow-400 hover:text-yellow-400 font-semibold py-4 px-8 rounded-full transition-all">
-                        Meet the Teacher
-                    </a>
-                </div>
-            </div>
+        <!-- Decorative Gradient Orbs -->
+        <div
+            class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/8 blur-3xl rounded-full translate-x-1/4 -translate-y-1/4">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-yellow-400/8 blur-3xl rounded-full -translate-x-1/4 translate-y-1/4">
+        </div>
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-600/5 blur-3xl rounded-full">
+        </div>
 
-            <div class="md:w-1/2 flex justify-center relative">
-                <div class="relative w-80 h-80 md:w-[500px] md:h-[500px]">
-                    <!-- Placeholder for Hero Image -->
-                    <div
-                        class="absolute inset-0 bg-gradient-to-tr from-blue-600 to-yellow-400 rounded-full blur-2xl opacity-30 animate-pulse-slow">
+        <div class="container mx-auto px-6 relative z-10 pt-24 pb-16">
+            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-8">
+                <!-- Hero Text -->
+                <div class="md:w-1/2 text-center md:text-left animate-slide-in-left">
+                    <span
+                        class="inline-block py-1.5 px-4 rounded-full bg-blue-900/50 border border-blue-500/30 text-blue-300 text-sm font-bold tracking-wider uppercase mt-8 md:mt-0 mb-6 animate-pulse-slow">
+                        🚀 Master English with Confidence
+                    </span>
+                    <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-6">
+                        Unlock Your Potential with <span class="gradient-text">EnglishLike</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-lg mx-auto md:mx-0 leading-relaxed">
+                        EnglishLike is an English educational institute which aims to make well equipped English
+                        speakers
+                        and balanced personalities!
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <a href="courses.html"
+                            class="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-brand-dark font-bold py-4 px-10 rounded-full shadow-lg shadow-yellow-400/30 transition-all transform hover:scale-105 hover:-translate-y-1 text-lg">
+                            Explore Courses
+                        </a>
+                        <a href="about.html"
+                            class="bg-transparent border-2 border-slate-500 text-white hover:border-yellow-400 hover:text-yellow-400 font-semibold py-4 px-10 rounded-full transition-all text-lg hover:shadow-lg hover:shadow-yellow-400/10">
+                            Meet the Teacher
+                        </a>
                     </div>
-                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                        alt="Students Learning"
-                        class="relative z-10 rounded-3xl shadow-2xl border-4 border-slate-700/50 object-cover w-full h-full animate-float">
+                </div>
+
+                <!-- Hero Image -->
+                <div class="md:w-1/2 flex justify-center relative animate-slide-in-right" style="opacity:0;">
+                    <div class="relative w-80 h-80 md:w-[520px] md:h-[520px]">
+                        <!-- Orbit rings -->
+                        <div class="orbit-ring w-full h-full animate-spin-slow"></div>
+                        <div class="orbit-ring w-[85%] h-[85%] top-[7.5%] left-[7.5%] animate-spin-slow"
+                            style="animation-direction: reverse; border-color: rgba(99, 102, 241, 0.1);"></div>
+
+                        <!-- Glow behind image -->
+                        <div
+                            class="absolute inset-8 bg-gradient-to-tr from-blue-600 to-yellow-400 rounded-3xl blur-2xl opacity-20 animate-pulse-slow">
+                        </div>
+
+                        <!-- Main Image -->
+                        <div class="absolute inset-8 rounded-3xl overflow-hidden glow-border">
+                            <img src="assets/groupphoto.PNG" alt="EnglishLike Group Photo"
+                                class="w-full h-full object-cover rounded-3xl">
+                        </div>
+
+                        <!-- Floating Badge - Students -->
+                        <div
+                            class="absolute -bottom-2 -left-2 md:-left-6 bg-slate-900/95 border border-slate-600/50 p-3 md:p-4 rounded-2xl shadow-2xl z-20 animate-float">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-gradient-to-br from-yellow-400 to-orange-500 p-2.5 md:p-3 rounded-xl">
+                                    <span class="text-xl md:text-2xl">👨‍🎓</span>
+                                </div>
+                                <div>
+                                    <p class="text-white text-lg md:text-xl font-extrabold">500+</p>
+                                    <p class="text-slate-300 text-xs font-semibold uppercase tracking-wider">Students
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Badge - Certified -->
+                        <div
+                            class="absolute -top-2 -right-2 md:-right-6 bg-slate-900/95 border border-slate-600/50 p-3 md:p-4 rounded-2xl shadow-2xl z-20 animate-float-delay">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-2.5 md:p-3 rounded-xl">
+                                    <span class="text-xl md:text-2xl">🏆</span>
+                                </div>
+                                <div>
+                                    <p class="text-white text-lg md:text-xl font-extrabold">Certified</p>
+                                    <p class="text-slate-300 text-xs font-semibold uppercase tracking-wider">Educator
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+            <span class="text-slate-500 text-xs font-semibold uppercase tracking-widest">Scroll</span>
+            <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3">
+                </path>
+            </svg>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="py-20 bg-brand-dark">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Why Choose <span
-                        class="text-yellow-400">EnglishLike?</span></h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">We combine modern teaching methodologies with personalized
-                    attention to ensure your success.</p>
+    <!-- ============ WHY CHOOSE US ============ -->
+    <section class="py-24 bg-gradient-to-b from-brand-dark via-slate-900 to-brand-dark relative overflow-hidden">
+        <!-- Background accents -->
+        <div class="absolute top-20 right-0 w-80 h-80 bg-yellow-400/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 left-0 w-80 h-80 bg-blue-600/5 rounded-full blur-3xl"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-20 scroll-reveal">
+                <span
+                    class="inline-block py-1.5 px-4 rounded-full bg-blue-900/50 border border-blue-500/30 text-blue-300 text-sm font-bold tracking-wider uppercase mb-5">
+                    💎 Our Advantage
+                </span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4">
+                    Why Choose <span class="gradient-text">EnglishLike?</span>
+                </h2>
+                <p class="text-slate-400 max-w-2xl mx-auto text-lg">We combine modern teaching methodologies with
+                    personalized attention to ensure your success.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 <!-- Feature 1 -->
-                <div
-                    class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:border-yellow-400/50 transition-all group hover:-translate-y-2">
+                <div class="feature-card scroll-reveal group">
                     <div
-                        class="w-14 h-14 bg-blue-900/50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-yellow-400 transition-colors">
-                        <svg class="w-8 h-8 text-yellow-400 group-hover:text-brand-dark" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
-                            </path>
-                        </svg>
+                        class="bg-slate-800/40 p-8 rounded-3xl border border-slate-700/50 hover:border-yellow-400/40 transition-all duration-500 h-full relative overflow-hidden">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-yellow-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        </div>
+                        <div class="relative z-10">
+                            <div
+                                class="w-16 h-16 bg-gradient-to-br from-yellow-400/20 to-orange-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:from-yellow-400 group-hover:to-orange-500 transition-all duration-500">
+                                <svg class="w-8 h-8 text-yellow-400 group-hover:text-brand-dark transition-colors duration-500"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                                    </path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Expert Guidance</h3>
+                            <p class="text-slate-400 leading-relaxed">Learn directly from a qualified professional — a
+                                First Class Honours graduate, Gold Medalist, and Cambridge Certified educator.</p>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Expert Guidance</h3>
-                    <p class="text-slate-400">Learn directly from qualified professionals with years of experience in
-                        teaching English as a second language.</p>
                 </div>
 
                 <!-- Feature 2 -->
-                <div
-                    class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:border-yellow-400/50 transition-all group hover:-translate-y-2">
+                <div class="feature-card scroll-reveal group">
                     <div
-                        class="w-14 h-14 bg-blue-900/50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-yellow-400 transition-colors">
-                        <svg class="w-8 h-8 text-yellow-400 group-hover:text-brand-dark" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z">
-                            </path>
-                        </svg>
+                        class="bg-slate-800/40 p-8 rounded-3xl border border-slate-700/50 hover:border-yellow-400/40 transition-all duration-500 h-full relative overflow-hidden">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-blue-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        </div>
+                        <div class="relative z-10">
+                            <div
+                                class="w-16 h-16 bg-gradient-to-br from-blue-400/20 to-indigo-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:from-blue-400 group-hover:to-indigo-500 transition-all duration-500">
+                                <svg class="w-8 h-8 text-blue-400 group-hover:text-white transition-colors duration-500"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Interactive Learning</h3>
+                            <p class="text-slate-400 leading-relaxed">Engage in dynamic sessions that focus on
+                                real-world conversation, pronunciation, and confidence building through practice.</p>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Interactive Learning</h3>
-                    <p class="text-slate-400">Engage in dynamic sessions that focus on real-world conversation,
-                        pronunciation, and confidence building.</p>
                 </div>
 
                 <!-- Feature 3 -->
-                <div
-                    class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:border-yellow-400/50 transition-all group hover:-translate-y-2">
+                <div class="feature-card scroll-reveal group">
                     <div
-                        class="w-14 h-14 bg-blue-900/50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-yellow-400 transition-colors">
-                        <svg class="w-8 h-8 text-yellow-400 group-hover:text-brand-dark" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
+                        class="bg-slate-800/40 p-8 rounded-3xl border border-slate-700/50 hover:border-yellow-400/40 transition-all duration-500 h-full relative overflow-hidden">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-emerald-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        </div>
+                        <div class="relative z-10">
+                            <div
+                                class="w-16 h-16 bg-gradient-to-br from-emerald-400/20 to-teal-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:from-emerald-400 group-hover:to-teal-500 transition-all duration-500">
+                                <svg class="w-8 h-8 text-emerald-400 group-hover:text-white transition-colors duration-500"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Proven Results</h3>
+                            <p class="text-slate-400 leading-relaxed">Join hundreds of successful students who have
+                                transformed their English skills, career prospects, and personalities with us.</p>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Proven Results</h3>
-                    <p class="text-slate-400">Join hundreds of successful students who have transformed their English
-                        skills and career prospects with us.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ============ STATS COUNTER ============ -->
+    <section class="py-16 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-900/80 via-brand-dark to-indigo-900/80"></div>
+        <div
+            class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-yellow-400/30 to-transparent">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-400/30 to-transparent">
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-3 gap-8 max-w-3xl mx-auto">
+                <div class="text-center scroll-reveal">
+                    <p class="stat-number text-4xl md:text-5xl font-extrabold mb-2" data-target="500">0</p>
+                    <p class="text-slate-400 text-sm font-semibold uppercase tracking-wider">Students Taught</p>
+                </div>
+                <div class="text-center scroll-reveal">
+                    <p class="stat-number text-4xl md:text-5xl font-extrabold mb-2" data-target="5">0</p>
+                    <p class="text-slate-400 text-sm font-semibold uppercase tracking-wider">Years Experience</p>
+                </div>
+                <div class="text-center scroll-reveal">
+                    <p class="stat-number text-4xl md:text-5xl font-extrabold mb-2" data-target="6">0</p>
+                    <p class="text-slate-400 text-sm font-semibold uppercase tracking-wider">Courses Offered</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ TEACHER SPOTLIGHT ============ -->
+    <section class="py-24 bg-gradient-to-b from-brand-dark to-slate-900 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-yellow-400/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-indigo-600/5 rounded-full blur-3xl"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col md:flex-row items-center gap-16 max-w-6xl mx-auto">
+                <!-- Teacher Image -->
+                <div class="md:w-5/12 scroll-reveal">
+                    <div class="relative">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-tr from-yellow-400/20 to-blue-600/20 rounded-3xl blur-2xl scale-110">
+                        </div>
+                        <div
+                            class="relative w-72 h-80 md:w-[360px] md:h-[440px] rounded-3xl overflow-hidden glow-border mx-auto">
+                            <img src="assets/teacher.jpg" alt="Ms. Sudari Katukithule"
+                                class="w-full h-full object-cover rounded-3xl">
+                        </div>
+
+                        <!-- Qualification badge -->
+                        <div
+                            class="absolute -bottom-6 -right-4 md:-right-8 glass-card border border-yellow-400/30 p-4 rounded-2xl shadow-2xl z-20 animate-float">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-gradient-to-br from-yellow-400 to-orange-500 p-3 rounded-xl">
+                                    <span class="text-2xl">🎓</span>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-yellow-400 font-bold uppercase tracking-wider">B.Ed (Hons)
+                                    </p>
+                                    <p class="text-white font-bold text-sm">First Class</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Teacher Info -->
+                <div class="md:w-7/12 text-center md:text-left scroll-reveal">
+                    <span
+                        class="inline-block py-1.5 px-4 rounded-full bg-yellow-400/10 border border-yellow-400/30 text-yellow-400 text-sm font-bold tracking-wider uppercase mb-5">
+                        👩‍🏫 Meet Your Mentor
+                    </span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4">
+                        Ms. Sudari <span class="gradient-text">Katukithule</span>
+                    </h2>
+                    <p class="text-slate-300 text-lg mb-8 leading-relaxed max-w-xl">
+                        A First Class Honours graduate, Vice Chancellor's Gold Medalist, and Youth Icon Awardee at the
+                        SUNFO International Sustainability Icon Award Summit.
+                        With Cambridge English certification and years of experience, she brings world-class teaching to
+                        every student.
+                    </p>
+
+                    <!-- Key highlights -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-center gap-3 glass-card p-3 rounded-xl border border-slate-700/50">
+                            <span class="text-xl">🏅</span>
+                            <span class="text-slate-300 text-sm font-medium">Vice Chancellor's Gold Medalist</span>
+                        </div>
+                        <div class="flex items-center gap-3 glass-card p-3 rounded-xl border border-slate-700/50">
+                            <span class="text-xl">🌍</span>
+                            <span class="text-slate-300 text-sm font-medium">SUNFO Youth Icon Awardee</span>
+                        </div>
+                        <div class="flex items-center gap-3 glass-card p-3 rounded-xl border border-slate-700/50">
+                            <span class="text-xl">📜</span>
+                            <span class="text-slate-300 text-sm font-medium">Cambridge English Certified</span>
+                        </div>
+                        <div class="flex items-center gap-3 glass-card p-3 rounded-xl border border-slate-700/50">
+                            <span class="text-xl">🔬</span>
+                            <span class="text-slate-300 text-sm font-medium">Published Researcher</span>
+                        </div>
+                    </div>
+
+                    <a href="about.html"
+                        class="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-brand-dark font-bold py-3.5 px-8 rounded-full shadow-lg shadow-yellow-400/20 transition-all transform hover:scale-105 hover:-translate-y-1">
+                        View Full Profile
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ WHAT YOU'LL LEARN ============ -->
+    <section class="py-24 bg-brand-dark relative overflow-hidden">
+        <div
+            class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent">
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16 scroll-reveal">
+                <span
+                    class="inline-block py-1.5 px-4 rounded-full bg-indigo-900/50 border border-indigo-500/30 text-indigo-300 text-sm font-bold tracking-wider uppercase mb-5">
+                    🎯 Skills You'll Master
+                </span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4">
+                    What You'll <span class="gradient-text">Learn</span>
+                </h2>
+                <p class="text-slate-400 max-w-2xl mx-auto text-lg">Comprehensive English education covering every skill
+                    you need to succeed.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                <!-- Skill 1 -->
+                <div class="scroll-reveal group">
+                    <div
+                        class="bg-slate-800/40 p-6 rounded-2xl border border-slate-700/50 hover:border-yellow-400/40 transition-all duration-500 hover:-translate-y-2 text-center h-full hover-glow">
+                        <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-500">🗣️</div>
+                        <h3 class="text-lg font-bold text-white mb-2">Speaking</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Build fluency and confidence in daily
+                            conversations and professional settings.</p>
+                    </div>
+                </div>
+
+                <!-- Skill 2 -->
+                <div class="scroll-reveal group">
+                    <div
+                        class="bg-slate-800/40 p-6 rounded-2xl border border-slate-700/50 hover:border-yellow-400/40 transition-all duration-500 hover:-translate-y-2 text-center h-full hover-glow">
+                        <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-500">✍️</div>
+                        <h3 class="text-lg font-bold text-white mb-2">Writing</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Master essays, emails, reports, and creative
+                            writing with precision and style.</p>
+                    </div>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="scroll-reveal group">
+                    <div
+                        class="bg-slate-800/40 p-6 rounded-2xl border border-slate-700/50 hover:border-yellow-400/40 transition-all duration-500 hover:-translate-y-2 text-center h-full hover-glow">
+                        <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-500">👂</div>
+                        <h3 class="text-lg font-bold text-white mb-2">Listening</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Sharpen comprehension through real-world
+                            audio, media, and discussions.</p>
+                    </div>
+                </div>
+
+                <!-- Skill 4 -->
+                <div class="scroll-reveal group">
+                    <div
+                        class="bg-slate-800/40 p-6 rounded-2xl border border-slate-700/50 hover:border-yellow-400/40 transition-all duration-500 hover:-translate-y-2 text-center h-full hover-glow">
+                        <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-500">📖</div>
+                        <h3 class="text-lg font-bold text-white mb-2">Reading</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Develop critical reading skills and vocabulary
+                            for academic and professional success.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CTA SECTION ============ -->
+    <section class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-900 via-brand-dark to-indigo-900"></div>
+        <div class="absolute top-0 left-0 w-full h-full">
+            <div class="absolute top-10 left-10 w-40 h-40 bg-yellow-400/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 right-10 w-56 h-56 bg-blue-400/10 rounded-full blur-3xl"></div>
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500/5 rounded-full blur-3xl">
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6 text-center relative z-10 scroll-reveal">
+            <span
+                class="inline-block py-1.5 px-4 rounded-full bg-yellow-400/10 border border-yellow-400/30 text-yellow-400 text-sm font-bold tracking-wider uppercase mb-6">
+                🌟 Start Today
+            </span>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6 max-w-3xl mx-auto">
+                Ready to <span class="gradient-text">Transform</span> Your English Journey?
+            </h2>
+            <p class="text-slate-300 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+                Join the EnglishLike family and unlock your full potential. Your journey to fluent, confident English
+                starts here.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="courses.html"
+                    class="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-brand-dark font-bold py-4 px-10 rounded-full shadow-lg shadow-yellow-400/30 transition-all transform hover:scale-105 hover:-translate-y-1 text-lg">
+                    View All Courses
+                </a>
+                <a href="contact.html"
+                    class="bg-transparent border-2 border-slate-500 text-white hover:border-yellow-400 hover:text-yellow-400 font-semibold py-4 px-10 rounded-full transition-all text-lg">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
     <footer class="bg-slate-900 border-t border-slate-800 pt-16 pb-8">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
@@ -272,13 +719,69 @@
                 </div>
             </div>
             <div class="border-t border-slate-800 pt-8 text-center text-slate-500 text-sm">
-                &copy; 2024 EnglishLike Institute. All rights reserved.
+                &copy; 2026 EnglishLike Institute. All rights reserved.
             </div>
         </div>
     </footer>
 
     <script src="main.js"></script>
-</body>
+    <script>
+        // Scroll Reveal Animation
+        const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
 
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('revealed');
+                    }, index * 80);
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        scrollRevealElements.forEach(el => revealObserver.observe(el));
+
+        // Counter Animation
+        function animateCounter(el) {
+            const target = parseInt(el.getAttribute('data-target'));
+            const duration = 2000;
+            const startTime = performance.now();
+
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+
+                // Ease out cubic
+                const easeOut = 1 - Math.pow(1 - progress, 3);
+                const current = Math.round(easeOut * target);
+
+                el.textContent = current + '+';
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                }
+            }
+
+            requestAnimationFrame(update);
+        }
+
+        // Trigger counter animation when stats section is visible
+        const statElements = document.querySelectorAll('.stat-number[data-target]');
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statElements.forEach(el => statsObserver.observe(el));
+    </script>
+</body>
 
 </html>
