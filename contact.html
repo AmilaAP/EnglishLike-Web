@@ -429,7 +429,7 @@
     </div>
 
     <!-- ============ HERO SECTION ============ -->
-    <section class="relative min-h-[60vh] flex items-center hero-contact-bg overflow-hidden pt-24">
+    <section class="relative min-h-[60vh] flex items-center hero-contact-bg overflow-hidden pt-36">
         <!-- Animated Background Particles -->
         <div class="absolute inset-0 overflow-hidden">
             <div class="particle w-2 h-2 bg-yellow-400/30 top-[15%] left-[10%] animate-float"></div>
@@ -478,7 +478,7 @@
         <div class="absolute bottom-20 left-0 w-80 h-80 bg-blue-600/5 rounded-full blur-3xl"></div>
 
         <div class="container mx-auto px-6 relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto -mt-28">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
 
                 <!-- Phone Card -->
                 <div class="contact-card scroll-reveal">
@@ -561,7 +561,7 @@
     </section>
 
     <!-- ============ CONTACT FORM SECTION ============ -->
-    <section class="py-24 bg-brand-dark relative overflow-hidden">
+    <section id="contactForm" class="py-24 bg-brand-dark relative overflow-hidden">
         <div
             class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent">
         </div>
@@ -662,6 +662,23 @@
                                     <svg class="w-4 h-4 text-yellow-400" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                                        </path>
+                                    </svg>
+                                    Contact No
+                                </span>
+                            </label>
+                            <input type="tel" name="Contact No" id="contactNo"
+                                class="form-input w-full px-5 py-4 border border-slate-600/50 rounded-2xl text-white placeholder-slate-500 outline-none"
+                                placeholder="e.g. 071 234 5678">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-300 mb-2 tracking-wider uppercase">
+                                <span class="flex items-center gap-2">
+                                    <svg class="w-4 h-4 text-yellow-400" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
                                         </path>
                                     </svg>
@@ -670,9 +687,11 @@
                             </label>
                             <select name="Course" id="course"
                                 class="form-input w-full px-5 py-4 border border-slate-600/50 rounded-2xl text-white outline-none bg-transparent">
-                                <option class="bg-slate-800 text-white">Spoken English Mastery</option>
-                                <option class="bg-slate-800 text-white">IELTS Preparation</option>
-                                <option class="bg-slate-800 text-white">Business English</option>
+                                <option class="bg-slate-800 text-white">Basic English Course</option>
+                                <option class="bg-slate-800 text-white">Spoken English Class</option>
+                                <option class="bg-slate-800 text-white">Online Basic English Course</option>
+                                <option class="bg-slate-800 text-white">Online Spoken English Class</option>
+                                <option class="bg-slate-800 text-white">Corporate Training</option>
                                 <option class="bg-slate-800 text-white">Other Inquiry</option>
                             </select>
                         </div>
@@ -861,6 +880,31 @@
     <script>
         // Set the _next URL dynamically to stay on the same page
         document.getElementById('nextUrl').value = window.location.href;
+
+        // ============ AUTO-SELECT COURSE FROM URL PARAM ============
+        (function () {
+            const params = new URLSearchParams(window.location.search);
+            const courseName = params.get('course');
+            if (courseName) {
+                const courseSelect = document.getElementById('course');
+                if (courseSelect) {
+                    // Find the matching option
+                    for (let i = 0; i < courseSelect.options.length; i++) {
+                        if (courseSelect.options[i].text === courseName) {
+                            courseSelect.selectedIndex = i;
+                            break;
+                        }
+                    }
+                }
+                // Scroll to the form section
+                const formSection = document.getElementById('contactForm');
+                if (formSection) {
+                    setTimeout(() => {
+                        formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 300);
+                }
+            }
+        })();
 
         // ============ SCROLL REVEAL ============
         const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
