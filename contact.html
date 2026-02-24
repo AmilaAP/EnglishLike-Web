@@ -561,7 +561,7 @@
     </section>
 
     <!-- ============ CONTACT FORM SECTION ============ -->
-    <section id="contactForm" class="py-24 bg-brand-dark relative overflow-hidden">
+    <section id="contactFormSection" class="py-24 bg-brand-dark relative overflow-hidden">
         <div
             class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent">
         </div>
@@ -668,7 +668,8 @@
                                     Contact No
                                 </span>
                             </label>
-                            <input type="tel" name="Contact No" id="contactNo"
+                            <input type="tel" name="Contact No" id="contactNo" inputmode="numeric" pattern="[0-9 +\-]*"
+                                oninput="this.value = this.value.replace(/[^0-9+\- ]/g, '')"
                                 class="form-input w-full px-5 py-4 border border-slate-600/50 rounded-2xl text-white placeholder-slate-500 outline-none"
                                 placeholder="e.g. 071 234 5678">
                         </div>
@@ -897,7 +898,7 @@
                     }
                 }
                 // Scroll to the form section
-                const formSection = document.getElementById('contactForm');
+                const formSection = document.getElementById('contactFormSection');
                 if (formSection) {
                     setTimeout(() => {
                         formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -925,7 +926,7 @@
 
         // ============ FORM VALIDATION ============
         document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('contactForm');
+            const form = document.querySelector('form#contactForm');
             const submitBtn = document.getElementById('submitBtn');
             const btnText = document.getElementById('btnText');
             const btnArrow = document.getElementById('btnArrow');
